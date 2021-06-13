@@ -4,7 +4,7 @@ echo
 echo "############################################################"
 echo "#Ex:1 create the dev namespace"
 echo "############################################################"
-kubectl --kubeconfig=chandran-edu-kubeconfig.yaml apply -f demo-namespace.yaml -n demos
+kubectl --kubeconfig=chandran-edu-kubeconfig.yaml apply -f hpa/demo-namespace.yaml -n demos
 
 echo 
 echo "############################################################"
@@ -12,7 +12,7 @@ echo "#Ex:2 Install php-apache"
 echo "############################################################"
 cat php-apache.yaml
 echo 
-kubectl --kubeconfig=chandran-edu-kubeconfig.yaml apply -f php-apache.yaml -n demos
+kubectl --kubeconfig=chandran-edu-kubeconfig.yaml apply -f hpa/php-apache.yaml -n demos
 kubectl --kubeconfig=chandran-edu-kubeconfig.yaml describe get deployment -n demos
 
 echo 

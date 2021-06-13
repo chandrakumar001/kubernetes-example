@@ -7,7 +7,7 @@ echo
 echo "############################################################"
 echo "#Ex:1 create the dev namespace"
 echo "############################################################"
-kubectl --kubeconfig=chandran-edu-kubeconfig.yaml apply -f demo-namespace.yaml -n demos
+kubectl --kubeconfig=chandran-edu-kubeconfig.yaml apply -f namespace/demo-namespace.yaml -n demos
 
 echo  
 echo "############################################################"
@@ -19,28 +19,28 @@ echo
 echo "############################################################"
 echo "#Ex:3 Install quota"
 echo "############################################################"
-cat quota.yaml
+cat quota-hpa/quota.yaml
 echo 
-kubectl --kubeconfig=chandran-edu-kubeconfig.yaml apply -f quota.yaml -n demos
+kubectl --kubeconfig=chandran-edu-kubeconfig.yaml apply -f quota-hpa/quota.yaml -n demos
 kubectl --kubeconfig=chandran-edu-kubeconfig.yaml describe quota demo-quota -n demos
 
 echo  
 echo "############################################################"
 echo "#Ex:3 Set default limits"
 echo "############################################################"
-cat limits.yaml   
+cat quota-hpa/limits.yaml   
 echo 
-kubectl --kubeconfig=chandran-edu-kubeconfig.yaml apply -f limits.yaml -n demos
+kubectl --kubeconfig=chandran-edu-kubeconfig.yaml apply -f quota-hpa/limits.yaml -n demos
 kubectl --kubeconfig=chandran-edu-kubeconfig.yaml describe limits  demo-limits -n demos
 
 echo 
 echo "############################################################"
 echo "#Ex:4 Install php-apache"
 echo "############################################################"
-cat php-apache.yaml
+cat quota-hpa/php-apache.yaml
 echo 
-kubectl --kubeconfig=chandran-edu-kubeconfig.yaml apply -f php-apache.yaml -n demos
-kubectl --kubeconfig=chandran-edu-kubeconfig.yaml describe get deployment -n demos
+kubectl --kubeconfig=chandran-edu-kubeconfig.yaml apply -f quota-hpa/php-apache.yaml -n demos
+kubectl --kubeconfig=chandran-edu-kubeconfig.yaml describe deployment -n demos
 
 echo 
 echo "############################################################"
@@ -53,6 +53,6 @@ echo
 echo "############################################################"
 echo "#Ex:6 Increase load"
 echo "############################################################"
-kubectl --kubeconfig=chandran-edu-kubeconfig.yaml apply -f load-test.yaml -n demos
+kubectl --kubeconfig=chandran-edu-kubeconfig.yaml apply -f quota-hpa/load-test.yaml -n demos
 
 trap "echo" EXIT
