@@ -8,4 +8,7 @@ SPORT="SPORT N" ##Variable string concat
 echo "Chandra varibale ${SPORT}, hello"
 echo
 echo "Test"
+
 printForQuotaAndPods
+
+trap "echo" EXIT

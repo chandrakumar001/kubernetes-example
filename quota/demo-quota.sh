@@ -4,6 +4,7 @@
 
 echo "#kubectl delete ns demos"
 kubectl --kubeconfig=chandran-edu-kubeconfig.yaml delete ns demos
+
 echo  
 echo "############################################################"
 echo "#create the dev namespace"
@@ -77,4 +78,4 @@ kubectl --kubeconfig=chandran-edu-kubeconfig.yaml describe deployment quota-demo
 
 printForQuotaAndPods
 
-trap "echo" EXIT    
+trap "echo" EXIT
