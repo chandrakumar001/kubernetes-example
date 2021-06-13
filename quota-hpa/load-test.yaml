@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: load-test
+  labels:
+    app: load-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: load-test
+  template:
+    metadata:
+      name: load-test
+      labels:
+        app: load-test
+    spec:
+      containers:
+        - name: load-test
+          image: busybox
+          command:
+            - /bin/sh
+            - -c
+            - "while true; do wget -q -O- http://php-apache; done"
