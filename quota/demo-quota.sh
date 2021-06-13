@@ -7,19 +7,19 @@ kubectl --kubeconfig=chandran-edu-kubeconfig.yaml delete ns demos
 
 echo  
 echo "############################################################"
-echo "#create the dev namespace"
+echo "#Ex:1 create the dev namespace"
 echo "############################################################"
 kubectl --kubeconfig=chandran-edu-kubeconfig.yaml apply -f demo-namespace.yaml -n demos
 
 echo  
 echo "############################################################"
-echo "#There is no quota"
+echo "#Ex:2 There is no quota"
 echo "############################################################"
 kubectl --kubeconfig=chandran-edu-kubeconfig.yaml get quota -n demos
 
 echo 
 echo "############################################################"
-echo "#Install quota"
+echo "#Ex:3 Install quota"
 echo "############################################################"
 cat quota.yaml
 echo 
@@ -28,7 +28,7 @@ kubectl --kubeconfig=chandran-edu-kubeconfig.yaml describe quota demo-quota -n d
 
 echo  
 echo "############################################################"
-echo "#Create a large pod - should fail"
+echo "#Ex:4 Create a large pod - should fail"
 echo "############################################################"
 cat pod1.yaml   
 echo 
@@ -40,7 +40,7 @@ printForQuotaAndPods
 
 echo  
 echo "############################################################"
-echo "#Create a pod with no limits - should fail"
+echo "#Ex:5 Create a pod with no limits - should fail"
 echo "############################################################"
 cat pod2.yaml   
 echo 
@@ -52,13 +52,13 @@ printForQuotaAndPods
 
 echo  
 echo "############################################################"
-echo "#There are no default limits"
+echo "#Ex:6 There are no default limits"
 echo "############################################################"
 kubectl --kubeconfig=chandran-edu-kubeconfig.yaml get limits -n demos
 
 echo  
 echo "############################################################"
-echo "#Set default limits"
+echo "#Ex:7 Set default limits"
 echo "############################################################"
 cat limits.yaml   
 echo 
@@ -67,7 +67,7 @@ kubectl --kubeconfig=chandran-edu-kubeconfig.yaml describe limits  demo-limits -
 
 echo  
 echo "############################################################"
-echo "#Create a pod with no limits - should succeed now"
+echo "#Ex:8 Create a pod with no limits - should succeed now"
 echo "############################################################"
 cat pod2.yaml   
 echo 

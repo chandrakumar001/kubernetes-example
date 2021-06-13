@@ -5,19 +5,19 @@ kubectl --kubeconfig=chandran-edu-kubeconfig.yaml delete ns demos
 
 echo  
 echo "############################################################"
-echo "#create the dev namespace"
+echo "#Ex:1 create the dev namespace"
 echo "############################################################"
 kubectl --kubeconfig=chandran-edu-kubeconfig.yaml apply -f demo-namespace.yaml -n demos
 
 echo  
 echo "############################################################"
-echo "#There is no quota"
+echo "#Ex:2 There is no quota"
 echo "############################################################"
 kubectl --kubeconfig=chandran-edu-kubeconfig.yaml get quota -n demos
 
 echo 
 echo "############################################################"
-echo "#Install quota"
+echo "#Ex:3 Install quota"
 echo "############################################################"
 cat quota.yaml
 echo 
@@ -26,7 +26,7 @@ kubectl --kubeconfig=chandran-edu-kubeconfig.yaml describe quota demo-quota -n d
 
 echo  
 echo "############################################################"
-echo "#Set default limits"
+echo "#Ex:3 Set default limits"
 echo "############################################################"
 cat limits.yaml   
 echo 
@@ -35,7 +35,7 @@ kubectl --kubeconfig=chandran-edu-kubeconfig.yaml describe limits  demo-limits -
 
 echo 
 echo "############################################################"
-echo "#Install php-apache"
+echo "#Ex:4 Install php-apache"
 echo "############################################################"
 cat php-apache.yaml
 echo 
@@ -44,14 +44,14 @@ kubectl --kubeconfig=chandran-edu-kubeconfig.yaml describe get deployment -n dem
 
 echo 
 echo "############################################################"
-echo "#Install php-apache HPA"
+echo "#Ex:5 Install php-apache HPA"
 echo "############################################################"
 kubectl --kubeconfig=chandran-edu-kubeconfig.yaml autoscale deployment php-apache --cpu-percent=50 --min=1 --max=10 -n demos
 kubectl --kubeconfig=chandran-edu-kubeconfig.yaml get hpa -n demos
 
 echo 
 echo "############################################################"
-echo "#Increase load"
+echo "#Ex:6 Increase load"
 echo "############################################################"
 kubectl --kubeconfig=chandran-edu-kubeconfig.yaml apply -f load-test.yaml -n demos
 
